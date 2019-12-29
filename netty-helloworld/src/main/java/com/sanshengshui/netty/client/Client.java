@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public final class Client {
+
     public static void main(String[] args) throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
@@ -18,12 +19,12 @@ public final class Client {
             b.group(group)
                     .channel(NioSocketChannel.class)
                     .handler(new ClientInitializer());
-            Channel ch = b.connect("127.0.0.1",8888).sync().channel();
+            Channel ch = b.connect("127.0.0.1", 8888).sync().channel();
 
 
             ChannelFuture lastWriteFuture = null;
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            for (;;) {
+            for (; ; ) {
                 String line = in.readLine();
                 if (line == null) {
                     break;
@@ -48,4 +49,5 @@ public final class Client {
             group.shutdownGracefully();
         }
     }
+
 }

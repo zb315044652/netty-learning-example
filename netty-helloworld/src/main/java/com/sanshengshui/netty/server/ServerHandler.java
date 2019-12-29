@@ -5,12 +5,14 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.SimpleChannelInboundHandler;
+
 import java.net.InetAddress;
 import java.util.Date;
 
 
 @Sharable
 public class ServerHandler extends SimpleChannelInboundHandler<String> {
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // 为新连接发送庆祝
